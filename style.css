@@ -1,0 +1,77 @@
+body{
+	background-image: url('flowerback.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+	font-family: sans-serif;
+	margin-bottom: 20%;
+	margin-top: 10%;
+	
+}
+
+ul{
+	text-align: left;
+	background-color: white;
+	margin-left: 30%;
+	margin-right: 30%;
+
+}
+
+.quote{
+	text-align: center;
+	text-decoration: underline;
+	background-color: white;
+	text-decoration: bold;
+	margin-left: 30%;
+	margin-right: 30%;
+	color: #FF69B4;
+}
+
+.changecolor{
+	color: red;
+	text-decoration: bold;
+	
+	
+}
+
+.mytable{
+	text-align: left;
+	border: none;
+	margin-left: 41%;
+}
+
+tr:nth-child(odd) {
+	background-color: pink;
+}
+
+tr:nth-child(even) {
+	background-color: white;
+}
+
+img{
+	
+	margin-left: 38%;
+	display: block;
+	margin-top: 8%;
+	
+}
+
+a:hover {
+	color: green;
+}
+
+h3{
+	background-color: #FF69B4;
+	margin-left: 30%;
+	margin-right: 30%;
+	color: white;
+	text-align: center;
+	margin-top: 8%;
+}
+
+.myname{
+	color: #FF69B4;
+	background-color: white;
+	margin-left: 40%;
+	margin-right: 40%;
+}
