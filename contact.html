@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Tanisha Batta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #09060f;
+      --surface:   #110d1e;
+      --surface2:  #1a1030;
+      --border:    #2d1f4e;
+      --purple:    #b44fff;
+      --purple-lt: #c97aff;
+      --pink:      #ff3fa4;
+      --lavender:  #d4a8ff;
+      --white:     #f0e6ff;
+      --muted:     #7a5fa0;
+      --dim:       #4a3468;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      overflow-x: hidden; min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(180,79,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,63,164,0.05) 0%, transparent 55%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+
+
+
+    /* ── PAGE ── */
+    .page { position: relative; z-index: 1; padding-top: 62px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 1000px; margin: 0 auto;
+      padding: 56px 32px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .page-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--purple); }
+
+    .page-title {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900; font-size: clamp(24px, 4vw, 38px);
+      letter-spacing: 1px; color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .page-title span {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-desc {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.8; color: var(--lavender);
+      max-width: 520px;
+    }
+
+    /* ── MAIN CONTENT ── */
+    .content {
+      max-width: 1000px; margin: 0 auto;
+      padding: 48px 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .content { grid-template-columns: 1fr; gap: 36px; padding: 36px 24px; }
+    }
+
+    /* ── CONTACT INFO ── */
+    .sec-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 20px;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 10px; }
+
+    .contact-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      text-decoration: none; color: inherit;
+      transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    }
+
+    .contact-link:hover {
+      border-color: rgba(180,79,255,0.45);
+      background: var(--surface2);
+      transform: translateX(3px);
+    }
+
+    .contact-link-icon { font-size: 20px; flex-shrink: 0; }
+
+    .contact-link-info { display: flex; flex-direction: column; gap: 2px; }
+
+    .contact-link-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .contact-link-value {
+      font-size: 13px; font-weight: 400;
+      color: var(--lavender);
+    }
+
+    .contact-link-arrow {
+      margin-left: auto; font-size: 14px;
+      color: var(--dim); transition: color 0.2s, transform 0.2s;
+    }
+    .contact-link:hover .contact-link-arrow { color: var(--purple); transform: translateX(3px); }
+
+    /* ── FORM ── */
+    .form-panel { display: flex; flex-direction: column; gap: 0; }
+
+    .form-fields { display: flex; flex-direction: column; gap: 14px; margin-bottom: 14px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+    .form-field-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-input, .form-textarea {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--lavender);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 300;
+      padding: 11px 14px; width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--dim); }
+    .form-input:focus, .form-textarea:focus { border-color: rgba(180,79,255,0.5); }
+
+    .form-textarea { resize: vertical; min-height: 110px; }
+
+    .form-submit {
+      background: var(--purple); color: #fff;
+      border: none; border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 500;
+      padding: 12px; width: 100%; cursor: pointer;
+      box-shadow: 0 0 18px rgba(180,79,255,0.22);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .form-submit:hover { background: var(--purple-lt); box-shadow: 0 0 26px rgba(180,79,255,0.32); }
+
+    #form-success {
+      display: none;
+      background: var(--surface);
+      border: 1px solid rgba(180,79,255,0.35);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      font-size: 13px; font-weight: 300;
+      color: var(--lavender); line-height: 1.7;
+    }
+
+    /* ── CALENDLY ── */
+    .calendly-section {
+      max-width: 1000px; margin: 0 auto;
+      padding: 0 32px 56px;
+    }
+
+    @media (max-width: 680px) { .calendly-section { padding: 0 24px 48px; } }
+
+    .sec-divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin-bottom: 40px;
+    }
+
+    .calendly-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      height: 700px;
+    }
+
+    .calendly-inline-widget {
+      width: 100%; height: 700px; min-width: 320px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-name {
+      font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--lavender); }
+    .footer-copy { font-size: 11px; color: var(--dim); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="navbar-placeholder"></div>
+
+
+<div class="page">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-eyebrow">Contact</div>
+    <div class="page-title">Let's <span>Connect.</span></div>
+    <div class="page-desc">
+      Open to opportunities, collaborations, and conversations.
+      Feel free to reach out — I'd love to hear from you.
+    </div>
+  </div>
+
+  <!-- CONTACT INFO + FORM -->
+  <div class="content">
+
+    <!-- LEFT — CONTACT INFO -->
+    <div>
+      <div class="sec-label">Reach Out</div>
+      <div class="contact-links">
+
+        <a class="contact-link" href="mailto:tanisha.batta@gmail.com">
+          <span class="contact-link-icon">📧</span>
+          <div class="contact-link-info">
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">tanisha.batta@gmail.com</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a class="contact-link" href="https://www.linkedin.com/in/tanisha-batta" target="_blank">
+          <span class="contact-link-icon">💼</span>
+          <div class="contact-link-info">
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">linkedin.com/in/tanisha-batta</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a class="contact-link" href="https://github.com/tanisha-batta" target="_blank">
+          <span class="contact-link-icon">🐙</span>
+          <div class="contact-link-info">
+            <div class="contact-link-label">GitHub</div>
+            <div class="contact-link-value">github.com/tanisha-batta</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+        <a class="contact-link" href="https://calendly.com/tanisha-batta" target="_blank">
+          <span class="contact-link-icon">📅</span>
+          <div class="contact-link-info">
+            <div class="contact-link-label">Schedule a Meeting</div>
+            <div class="contact-link-value">calendly.com/tanisha-batta</div>
+          </div>
+          <span class="contact-link-arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- RIGHT — FORM -->
+    <div class="form-panel">
+      <div class="sec-label">Send a Message</div>
+
+      <div id="form-success">
+        ✓ &nbsp;Message sent! I'll get back to you soon.
+      </div>
+
+      <!-- Replace YOUR_FORM_ID with your Formspree form ID -->
+      <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-fields">
+          <div class="form-group">
+            <label class="form-field-label">Name</label>
+            <input class="form-input" type="text" name="name" placeholder="Your name" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-field-label">Email</label>
+            <input class="form-input" type="email" name="email" placeholder="your@email.com" required/>
+          </div>
+          <div class="form-group">
+            <label class="form-field-label">Subject</label>
+            <input class="form-input" type="text" name="subject" placeholder="Opportunity / Collaboration / Hello"/>
+          </div>
+          <div class="form-group">
+            <label class="form-field-label">Message</label>
+            <textarea class="form-textarea" name="message" placeholder="Your message..." required></textarea>
+          </div>
+          <input type="hidden" name="_replyto" value="tanisha.batta@gmail.com"/>
+        </div>
+        <button class="form-submit" type="submit">Send Message →</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- CALENDLY -->
+  <div class="calendly-section">
+    <div class="sec-divider"></div>
+    <div class="sec-label" style="margin-bottom:20px; font-size:11px; font-weight:500; letter-spacing:3px; text-transform:uppercase; color:var(--purple);">Schedule a Meeting</div>
+    <div class="calendly-wrap">
+      <div
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/tanisha-batta?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=110d1e&text_color=d4a8ff&primary_color=b44fff"
+        style="width:100%; height:700px; min-width:320px;">
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Tanisha Batta</div>
+  <ul class="footer-links">
+     <li><a href="mailto:tanisha.batta@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/tanisha-batta-88954b1b0/" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/tanishabatta" target="_blank">GitHub</a></li>
+    <li><a href="https://calendly.com/tanisha-batta" target="_blank">Calendly</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2025 Tanisha Batta</div>
+</footer>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<script>
+ 
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        const container = document.getElementById('navbar-placeholder');
+        container.innerHTML = data;
+
+        // Run navbar.js
+        initNavbar(container);
+      });
+
+  var form = document.getElementById('contact-form');
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(function(res) {
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please email me directly at tanisha.batta@gmail.com');
+      }
+    }).catch(function() {
+      alert('Something went wrong. Please email me directly at tanisha.batta@gmail.com');
+    });
+  });
+</script>
+<script src="navbar.js"></script>
+</body>
+</html>

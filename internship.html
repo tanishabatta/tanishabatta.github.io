@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internship — Tanisha Batta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #09060f;
+      --surface:   #110d1e;
+      --surface2:  #1a1030;
+      --border:    #2d1f4e;
+      --purple:    #b44fff;
+      --purple-lt: #c97aff;
+      --pink:      #ff3fa4;
+      --lavender:  #d4a8ff;
+      --white:     #f0e6ff;
+      --muted:     #7a5fa0;
+      --dim:       #4a3468;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      overflow-x: hidden; min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(180,79,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,63,164,0.05) 0%, transparent 55%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+
+
+
+    /* ── PAGE ── */
+    .page { position: relative; z-index: 1; padding-top: 62px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 1000px; margin: 0 auto;
+      padding: 56px 32px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .page-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--purple); }
+
+    .page-title {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900; font-size: clamp(24px, 4vw, 38px);
+      letter-spacing: 1px; color: var(--white); margin-bottom: 12px;
+    }
+
+    .page-title span {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-desc {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.8; color: var(--lavender); max-width: 580px;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 1000px; margin: 0 auto;
+      padding: 48px 32px 64px;
+      display: flex; flex-direction: column; gap: 48px;
+    }
+
+    @media (max-width: 680px) { .content { padding: 36px 24px 48px; gap: 36px; } }
+
+    /* ── HERO ROW ── */
+    .hero-row {
+      display: grid;
+      grid-template-columns: 1fr 260px;
+      gap: 32px; align-items: center;
+    }
+
+    @media (max-width: 640px) { .hero-row { grid-template-columns: 1fr; } }
+
+    .hero-row-text { display: flex; flex-direction: column; gap: 14px; }
+
+    .company-row {
+      display: flex; align-items: center; gap: 14px;
+    }
+
+
+    .company-info { display: flex; flex-direction: column; gap: 2px; }
+
+    .company-name {
+      font-size: 18px; font-weight: 600; color: var(--lavender);
+    }
+
+    .company-meta { font-size: 12px; font-weight: 300; color: var(--muted); }
+
+    .intro-text {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.85; color: var(--lavender);
+    }
+
+    .hero-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.hero-row-text {
+  flex: 1;
+}
+
+.hero-photo {
+  width: 450px; /* controls image size */
+  aspect-ratio: 16 / 9; /* matches 900x500 image */
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .hero-row {
+    flex-direction: column; /* 🔥 stack instead of side-by-side */
+    align-items: flex-start;
+  }
+
+  .hero-photo {
+    width: 100%; /* make image full width */
+    margin-top: 20px;
+  }
+}
+
+    /* ── SECTION ── */
+    .section { display: flex; flex-direction: column; gap: 20px; }
+
+    .section-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple);
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    .section-intro {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.85; color: var(--lavender);
+    }
+
+    /* ── BULLET LIST ── */
+    .bullet-list { display: flex; flex-direction: column; gap: 10px; }
+
+    .bullet-item {
+      display: flex; gap: 12px; align-items: flex-start;
+      font-size: 13px; font-weight: 300;
+      line-height: 1.75; color: var(--lavender);
+    }
+
+    .bullet-dot {
+      flex-shrink: 0; margin-top: 7px;
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--purple); opacity: 0.7;
+    }
+
+
+    /* ── PHOTO GRID ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @media (max-width: 560px) { .photo-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .photo-slot {
+      aspect-ratio: 4/3;
+      border-radius: 8px; overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.18s;
+    }
+
+    .photo-slot:hover {
+      border-color: rgba(180,79,255,0.4);
+      transform: scale(1.02);
+    }
+
+    .photo-slot img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── MENTOR CARDS ── */
+    .mentor-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 560px) { .mentor-grid { grid-template-columns: 1fr; } }
+
+    .mentor-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: border-color 0.2s;
+    }
+
+    .mentor-card:hover { border-color: rgba(180,79,255,0.3); }
+
+    .mentor-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(180,79,255,0.3), rgba(255,63,164,0.3));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+
+    .mentor-info { display: flex; flex-direction: column; gap: 3px; }
+
+    .mentor-name { font-size: 14px; font-weight: 600; color: var(--lavender); }
+    .mentor-role { font-size: 12px; font-weight: 300; color: var(--muted); }
+
+
+
+    /* ── MODAL ── */
+    #photo-modal {
+      position: fixed; inset: 0;
+      background: rgba(5,2,10,0.88);
+      z-index: 10000; display: none;
+      align-items: center; justify-content: center;
+      padding: 20px; backdrop-filter: blur(6px);
+    }
+    #photo-modal.open { display: flex; }
+
+    #photo-modal img {
+      max-width: 90vw; max-height: 85vh;
+      border-radius: 8px; border: 1px solid var(--border);
+      box-shadow: 0 0 40px rgba(180,79,255,0.12);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-name {
+      font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--lavender); }
+    .footer-copy { font-size: 11px; color: var(--dim); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="navbar-placeholder"></div>
+
+<div class="page">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-eyebrow">Internship</div>
+    <div class="page-title">SageNet <span>Experience.</span></div>
+    <div class="page-desc">
+      A deep dive into my summer internship at SageNet, where I worked across
+      both the Cybersecurity and Network Operations Center teams.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- HERO ROW -->
+     
+<div class="hero-row">
+  <div class="hero-row-text">
+    <div class="company-row">
+      <div class="company-info">
+        <div class="company-name">SageNet</div>
+        <div class="company-meta">
+          Cybersecurity & NOC Intern · Jun 2025 — Aug 2025 · Marietta, GA
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-text">
+      Last summer, I had the opportunity to intern at SageNet, where I worked across both the
+      Network Operations Center (NOC) and Cybersecurity teams. This experience gave me hands-on
+      exposure to real-world security operations while also allowing me to grow in a collaborative
+      corporate environment. Beyond the technical skills, I built meaningful relationships and
+      gained insight into how different teams work together to maintain secure and reliable systems.
+    </div> <!-- ✅ YOU WERE MISSING THIS -->
+  </div>
+
+  <div class="hero-photo">
+    <img src="sagenetlogo.png" alt="Tanisha at SageNet"/>
+  </div>
+</div>
+
+    <!-- CYBERSECURITY -->
+    <div class="section">
+      <div class="section-label">Cybersecurity Team</div>
+      <div class="section-intro">
+        On the cybersecurity team, I worked closely with my manager and gained experience
+        in security operations, compliance, and incident response.
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Monitored and triaged security alerts using Microsoft Sentinel SIEM, investigating potential incidents and escalating confirmed threats to senior analysts.</span></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Managed identity and access controls in Active Directory and Azure AD, auditing permissions and reviewing anomalous sign-in activity to enforce least-privilege access.</span></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Analyzed phishing attempts and email-based threats through Abnormal Security to help protect the Microsoft 365 environment from social engineering attacks.</span></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Assisted in remediating findings from a PCI DSS compliance audit by addressing gaps in security controls and documentation.</span></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Worked on ServiceNow tickets related to security operations and user access issues.</span></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Created a ServiceNow dashboard for the Information Security team, providing a faster and more efficient way to track, prioritize, and manage tickets.</span></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Contributed to writing IT security policies, incident response runbooks, and SOC workflows to improve consistency and streamline onboarding.</span></div>
+      </div>
+      <div class="section-intro" style="font-style:italic; color:var(--muted);">
+        This role strengthened my understanding of how security teams detect, investigate, and respond to threats in a real-world environment.
+      </div>
+    </div>
+
+    <!-- NOC -->
+    <div class="section">
+      <div class="section-label">Network Operations Center</div>
+      <div class="section-intro">
+        In the NOC, I focused on improving and maintaining internal documentation systems.
+        I was responsible for updating and standardizing NOC documentation, including formatting,
+        metadata, and ensuring the correct runbooks were attached. I also migrated documentation
+        from a legacy knowledge base into ServiceNow.
+      </div>
+      <div class="section-intro">
+        While working on this process manually, I recognized that it was highly repetitive.
+        After discussing it with my manager, I took the initiative to automate the workflow.
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Developed a Python script to standardize and format documentation automatically.</span></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Eliminated the need for manual formatting, significantly improving efficiency.</span></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><span>Enabled bulk uploading of properly formatted documents into ServiceNow using existing import tools.</span></div>
+      </div>
+      <div class="section-intro" style="font-style:italic; color:var(--muted);">
+        This project showed me how small process improvements and automation can save time and reduce human error in operational environments.
+      </div>
+    </div>
+
+    <!-- MENTORSHIP -->
+    <div class="section">
+      <div class="section-label">Mentorship</div>
+      <div class="section-intro">
+        During my internship, I was fortunate to be mentored by Marcus McCormick and Fola Aldelaja,
+        who played a significant role in my growth. They provided guidance not only on technical
+        concepts but also on how to approach problems, think critically, and navigate a professional
+        environment. Their support gave me the confidence to take initiative, ask questions, and
+        explore solutions independently — especially when working on automation and security-related tasks.
+      </div>
+      <div class="mentor-grid">
+        <div class="mentor-card">
+          <div class="mentor-avatar">👤</div>
+          <div class="mentor-info">
+            <div class="mentor-name">Marcus McCormick</div>
+            <div class="mentor-role">Senior Manager Customer Operations · SageNet</div>
+          </div>
+        </div>
+        <div class="mentor-card">
+          <div class="mentor-avatar">👤</div>
+          <div class="mentor-info">
+            <div class="mentor-name">Fola Aldelaja</div>
+            <div class="mentor-role">Information Security Analyst · SageNet</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTERN EXPERIENCE -->
+    <div class="section">
+      <div class="section-label">Intern Experience</div>
+      <div class="section-intro">
+        One of the most rewarding parts of my internship was working alongside other interns.
+        We collaborated, shared experiences, and learned from each other's projects across
+        different departments. Outside of work, we also participated in team activities like
+        escape rooms, axe throwing, and bowling, which made the experience even more enjoyable.
+        Being surrounded by other students starting their careers created a supportive environment
+        where we could learn, grow, and relate to each other's journeys.
+      </div>
+
+            <!-- PHOTO GRID -->
+      <div class="photo-grid">
+        <div class="photo-slot" onclick="openPhoto('internship1.jpg')">
+          <img src="internship1.jpg" alt="Internship photo 1"/>
+        </div>
+        <div class="photo-slot" onclick="openPhoto('internship2.jpg')">
+          <img src="internship2.jpg" alt="Internship photo 2"/>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+<!-- PHOTO MODAL -->
+<div id="photo-modal" onclick="closePhoto()">
+  <img id="modal-img" src="" alt=""/>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Tanisha Batta</div>
+  <ul class="footer-links">
+    <li><a href="mailto:tanisha.batta@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/tanisha-batta-88954b1b0/" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/tanishabatta" target="_blank">GitHub</a></li>
+    <li><a href="https://calendly.com/tanisha-batta" target="_blank">Calendly</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2025 Tanisha Batta</div>
+</footer>
+
+<script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        const container = document.getElementById('navbar-placeholder');
+        container.innerHTML = data;
+
+        // Run navbar.js
+        initNavbar(container);
+      });
+
+  function openPhoto(src) {
+    document.getElementById('modal-img').src = src;
+    document.getElementById('photo-modal').classList.add('open');
+  }
+
+  function closePhoto() {
+    document.getElementById('photo-modal').classList.remove('open');
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePhoto();
+  });
+</script>
+<script src="navbar.js"></script>
+</body>
+</html>

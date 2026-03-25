@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — Tanisha Batta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #09060f;
+      --surface:   #110d1e;
+      --surface2:  #1a1030;
+      --border:    #2d1f4e;
+      --purple:    #b44fff;
+      --purple-lt: #c97aff;
+      --pink:      #ff3fa4;
+      --lavender:  #d4a8ff;
+      --white:     #f0e6ff;
+      --muted:     #7a5fa0;
+      --dim:       #4a3468;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(180,79,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,63,164,0.05) 0%, transparent 55%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+
+
+
+    /* ── PAGE WRAPPER ── */
+    .page {
+      position: relative; z-index: 1;
+      padding-top: 62px;
+    }
+
+    /* ── HERO SECTION ── */
+    .hero-section {
+      max-width: 1000px; margin: 0 auto;
+      padding: 64px 32px 56px;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 56px;
+      align-items: start;
+    }
+
+    @media (max-width: 680px) {
+      .hero-section { grid-template-columns: 1fr; gap: 36px; padding: 40px 24px; }
+      .hero-photo-wrap { width: 180px; margin: 0 auto; }
+    }
+
+    /* photo */
+    .hero-photo-wrap {
+      width: 260px; height: 310px;
+      position: relative; flex-shrink: 0;
+    }
+
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute; inset: -1px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      border-radius: 10px; opacity: 0.35; z-index: 0;
+    }
+
+    .hero-photo {
+      position: relative; z-index: 1;
+      width: 100%; height: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px; overflow: hidden;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+    }
+
+    .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .photo-ph-icon { font-size: 44px; opacity: 0.18; }
+    .photo-ph-text { font-size: 10px; letter-spacing: 2px; color: var(--dim); text-align: center; }
+
+    /* hero text */
+    .hero-text { display: flex; flex-direction: column; gap: 16px; }
+
+    .hero-greeting {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900;
+      font-size: clamp(22px, 4vw, 36px);
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-role {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .hero-bio {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.85; color: var(--lavender);
+      border-left: 2px solid var(--purple);
+      padding-left: 16px;
+    }
+
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .chip {
+      font-size: 11px; font-weight: 400;
+      padding: 5px 13px; border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--surface);
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .sec-divider {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* ── CONTENT SECTIONS ── */
+    .content-section {
+      max-width: 1000px; margin: 0 auto;
+      padding: 52px 32px;
+    }
+
+    @media (max-width: 680px) { .content-section { padding: 40px 24px; } }
+
+    .sec-label {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .sec-label::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    .sec-body {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.85; color: var(--lavender);
+    }
+
+    /* ── WHY CYBERSECURITY ── */
+    .why-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── INTERESTS ── */
+    .interests-list { display: flex; flex-direction: column; margin-top: 4px; }
+
+    .interest-row {
+      display: flex; align-items: flex-start; gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .interest-row:first-child { padding-top: 0; }
+    .interest-row:last-child  { border-bottom: none; padding-bottom: 0; }
+
+    .interest-icon {
+      font-size: 24px; flex-shrink: 0;
+      width: 36px; text-align: center; margin-top: 2px;
+    }
+
+    .interest-body { display: flex; flex-direction: column; gap: 5px; }
+
+    .interest-title {
+      font-size: 14px; font-weight: 600;
+      color: var(--lavender);
+    }
+
+    .interest-desc {
+      font-size: 13px; font-weight: 300;
+      line-height: 1.8; color: var(--muted);
+    }
+
+    .interests-closing {
+      font-size: 13px; font-weight: 300;
+      line-height: 1.8; color: var(--muted);
+      margin-top: 28px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-name {
+      font-family: 'Orbitron', monospace;
+      font-size: 13px; font-weight: 700;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--lavender); }
+    .footer-copy { font-size: 11px; color: var(--dim); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="navbar-placeholder"></div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero-section">
+
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+        <img src="meintern.JPG" alt="Tanisha Batta" style="display:block;"/> 
+        
+      </div>
+    </div>
+
+    <div class="hero-text">
+      <div class="hero-greeting">HI, I'M TANISHA! :)</div>
+      <div class="hero-role">Graduate Student &nbsp;·&nbsp; Cybersecurity &nbsp;·&nbsp; Georgia, USA</div>
+      <div class="hero-bio">
+        I'm currently a graduate student working toward building a career in cybersecurity.
+        I'm passionate about learning how systems work, how they can be protected, and how
+        to stay one step ahead in an ever-evolving digital world.
+      </div>
+      <div class="hero-chips">
+        <span class="chip">🎓 WGU · Cybersecurity &amp; IA</span>
+        <span class="chip">🛡️ SOC / Blue Team</span>
+        <span class="chip">📍 Georgia, USA</span>
+        <span class="chip">🇺🇸 US Citizen</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-divider"></div>
+
+  <!-- WHY CYBERSECURITY -->
+  <div class="why-section">
+    <div class="content-section">
+      <div class="sec-label">Why Cybersecurity</div>
+      <div class="sec-body">
+        I have a habit of always thinking about the worst-case scenario. I always want to be
+        prepared just in case anything goes wrong. It turns out that mindset is actually pretty
+        useful in cybersecurity. Every time I am working on projects or trying something new in
+        my personal life, I naturally find myself thinking about what could go wrong or fail.
+        It keeps things interesting and makes cybersecurity feel like a perfect fit for how my
+        brain already works.
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-divider"></div>
+
+  <!-- OUTSIDE OF WORK -->
+  <div class="content-section">
+    <div class="sec-label">Outside of Work</div>
+    <p style="font-size:14px; font-weight:300; line-height:1.85; color:var(--lavender); margin-bottom:20px;">
+  I would like to share some of the hobbies and interests I have and what I like to do in my free time! :D
+</p>
+
+<div class="interests-list">
+
+    <div class="interests-list">
+
+      <div class="interest-row">
+        <div class="interest-icon">🛍️</div>
+        <div class="interest-body">
+          <div class="interest-title">Thrifting</div>
+          <div class="interest-desc">I love the thrill of finding unique second-hand pieces. Fashion is something I genuinely enjoy, and thrifting lets me express that while being more sustainable. There's something really rewarding about giving clothes a second life.</div>
+        </div>
+      </div>
+
+      <div class="interest-row">
+        <div class="interest-icon">🔢</div>
+        <div class="interest-body">
+          <div class="interest-title">Sudoku</div>
+          <div class="interest-desc">I recently got into sudoku and I love the feeling of completing a puzzle. It's something I like to do in my free time to relax and challenge myself a little.</div>
+        </div>
+      </div>
+
+      <div class="interest-row">
+        <div class="interest-icon">🏋️</div>
+        <div class="interest-body">
+          <div class="interest-title">Weightlifting</div>
+          <div class="interest-desc">Health has become really important to me as I get older. Weightlifting helps me stay consistent and feel stronger both physically and mentally. It's one of my favourite ways to reset and focus on myself.</div>
+        </div>
+      </div>
+
+      <div class="interest-row">
+        <div class="interest-icon">🎙️</div>
+        <div class="interest-body">
+          <div class="interest-title">Podcasts</div>
+          <div class="interest-desc">I enjoy listening to podcasts when I want to unwind or give my eyes a break. I enjoy listening to true crime podcastslike Rotten Mango by Stephanie Soo,as well as CyberWire Daily and Security Now which helps me keep up with cybersecurity. A nice way to stay entertained and learn at the same time.</div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Tanisha Batta</div>
+  <ul class="footer-links">
+     <li><a href="mailto:tanisha.batta@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/tanisha-batta-88954b1b0/" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/tanishabatta" target="_blank">GitHub</a></li>
+    <li><a href="https://calendly.com/tanisha-batta" target="_blank">Calendly</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2025 Tanisha Batta</div>
+</footer>
+
+<script>
+ 
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        const container = document.getElementById('navbar-placeholder');
+        container.innerHTML = data;
+
+        // Run navbar.js
+        initNavbar(container);
+      });
+</script>
+<script src="navbar.js"></script>
+</body>
+</html>

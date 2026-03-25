@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume — Tanisha Batta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #09060f;
+      --surface:   #110d1e;
+      --surface2:  #1a1030;
+      --border:    #2d1f4e;
+      --purple:    #b44fff;
+      --purple-lt: #c97aff;
+      --pink:      #ff3fa4;
+      --lavender:  #d4a8ff;
+      --white:     #f0e6ff;
+      --muted:     #7a5fa0;
+      --dim:       #4a3468;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      overflow-x: hidden; min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(180,79,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,63,164,0.05) 0%, transparent 55%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+
+
+
+    /* ── PAGE ── */
+    .page { position: relative; z-index: 1; padding-top: 62px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 1000px; margin: 0 auto;
+      padding: 56px 32px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .page-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--purple); }
+
+    .page-title {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900; font-size: clamp(24px, 4vw, 38px);
+      letter-spacing: 1px; color: var(--white); margin-bottom: 12px;
+    }
+
+    .page-title span {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-desc {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.8; color: var(--lavender); max-width: 520px;
+      margin-bottom: 24px;
+    }
+
+    /* header action buttons */
+    .header-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+
+    .btn {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.3px; padding: 10px 20px;
+      border-radius: 6px; cursor: pointer;
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 7px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--purple); color: #fff;
+      border: 1px solid var(--purple);
+      box-shadow: 0 0 16px rgba(180,79,255,0.2);
+    }
+    .btn-primary:hover { background: var(--purple-lt); box-shadow: 0 0 24px rgba(180,79,255,0.3); }
+
+    .btn-outline {
+      background: transparent; color: var(--lavender);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: rgba(180,79,255,0.4); color: var(--purple-lt); background: rgba(180,79,255,0.06); }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 1000px; margin: 0 auto;
+      padding: 40px 32px 64px;
+    }
+
+    @media (max-width: 680px) { .content { padding: 28px 24px 48px; } }
+
+    /* ── PDF VIEWER ── */
+    .pdf-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    /* toolbar */
+    .pdf-toolbar {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 8px;
+      flex-wrap: wrap;
+      background: var(--surface2);
+    }
+
+    .pdf-filename {
+      font-size: 12px; font-weight: 400;
+      color: var(--muted); margin-left: 4px;
+      display: flex; align-items: center; gap: 6px;
+    }
+
+    .pdf-filename-icon { font-size: 14px; }
+
+    /* embed */
+    .pdf-embed-wrap {
+      width: 100%; height: 75vh; min-height: 500px;
+      background: var(--surface2);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    .pdf-embed-wrap embed {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+
+    /* fallback */
+    .pdf-fallback {
+      display: none;
+      flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 16px; padding: 60px 24px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .pdf-fallback-icon { font-size: 40px; opacity: 0.3; }
+
+    .pdf-fallback-text {
+      font-size: 14px; font-weight: 300;
+      color: var(--muted); line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-name {
+      font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--lavender); }
+    .footer-copy { font-size: 11px; color: var(--dim); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="navbar-placeholder"></div>
+
+<div class="page">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-eyebrow">Resume</div>
+    <div class="page-title">My <span>Resume.</span></div>
+    <div class="page-desc">
+      View my full resume below, or download a copy to keep.
+    </div>
+    <div class="header-actions">
+      <a class="btn btn-primary" href="TanishaBatta_resume.pdf" download>↓ Download PDF</a>
+      <a class="btn btn-outline" href="TanishaBatta_resume.pdf" target="_blank">↗ Open in New Tab</a>
+    </div>
+  </div>
+
+  <!-- PDF VIEWER -->
+  <div class="content">
+    <div class="pdf-wrap">
+
+      <div class="pdf-toolbar">
+        <a class="btn btn-outline" style="padding:6px 14px; font-size:12px;" href="TanishaBatta_resume.pdf" download>↓ Download</a>
+        <a class="btn btn-outline" style="padding:6px 14px; font-size:12px;" href="TanishaBatta_resume.pdf" target="_blank">↗ New Tab</a>
+        <div class="pdf-filename">
+          <span class="pdf-filename-icon">📄</span>
+          TanishaBatta_resume.pdf
+        </div>
+      </div>
+
+      <div class="pdf-embed-wrap" id="pdf-wrap">
+        <embed
+          id="pdf-embed"
+          src="TanishaBatta_resume.pdf"
+          type="application/pdf"
+          width="100%"
+          height="100%"
+        />
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Tanisha Batta</div>
+  <ul class="footer-links">
+     <li><a href="mailto:tanisha.batta@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/tanisha-batta-88954b1b0/" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/tanishabatta" target="_blank">GitHub</a></li>
+    <li><a href="https://calendly.com/tanisha-batta" target="_blank">Calendly</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2025 Tanisha Batta</div>
+</footer>
+
+<script>
+ 
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        const container = document.getElementById('navbar-placeholder');
+        container.innerHTML = data;
+
+        // Run navbar.js
+        initNavbar(container);
+      });
+
+  // Fallback if PDF can't render
+  var embed = document.getElementById('pdf-embed');
+  embed.onerror = function() {
+    document.getElementById('pdf-wrap').innerHTML =
+      '<div class="pdf-fallback" style="display:flex;">' +
+        '<div class="pdf-fallback-icon">📄</div>' +
+        '<div class="pdf-fallback-text">Your browser couldn\'t display the PDF inline.<br/>Use the buttons above to download or open it.</div>' +
+        '<a class="btn btn-primary" href="TanishaBatta_resume.pdf" download>↓ Download Resume</a>' +
+        '<a class="btn btn-outline" href="TanishaBatta_resume.pdf" target="_blank">↗ Open in New Tab</a>' +
+      '</div>';
+  };
+</script>
+<script src="navbar.js"></script>
+</body>
+</html>

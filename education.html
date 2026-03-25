@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Education — Tanisha Batta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #09060f;
+      --surface:   #110d1e;
+      --surface2:  #1a1030;
+      --border:    #2d1f4e;
+      --purple:    #b44fff;
+      --purple-lt: #c97aff;
+      --pink:      #ff3fa4;
+      --lavender:  #d4a8ff;
+      --white:     #f0e6ff;
+      --muted:     #7a5fa0;
+      --dim:       #4a3468;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      overflow-x: hidden; min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(180,79,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,63,164,0.05) 0%, transparent 55%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+
+
+    /* ── PAGE ── */
+    .page { position: relative; z-index: 1; padding-top: 62px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 1000px; margin: 0 auto;
+      padding: 56px 32px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .page-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--purple); }
+
+    .page-title {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900; font-size: clamp(24px, 4vw, 38px);
+      letter-spacing: 1px; color: var(--white); margin-bottom: 12px;
+    }
+
+    .page-title span {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-desc {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.8; color: var(--lavender); max-width: 520px;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 1000px; margin: 0 auto;
+      padding: 48px 32px 64px;
+      display: flex; flex-direction: column; gap: 24px;
+    }
+
+    @media (max-width: 680px) { .content { padding: 36px 24px 48px; } }
+
+    /* ── EDU CARD ── */
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      animation: fadein 0.4s both;
+    }
+
+    .edu-card:nth-child(1) { animation-delay: 0.05s; }
+    .edu-card:nth-child(2) { animation-delay: 0.15s; }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .edu-card:hover { border-color: rgba(180,79,255,0.35); }
+
+    /* top stripe */
+    .edu-card.current { border-left: 3px solid var(--purple); }
+    .edu-card.completed { border-left: 3px solid var(--pink); }
+
+    /* ── CARD TOP ── */
+    .edu-top {
+      padding: 24px 24px 20px;
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (max-width: 560px) { .edu-top { flex-direction: column; } }
+
+    .edu-top-left { display: flex; flex-direction: column; gap: 6px; }
+
+    .edu-school {
+      font-size: 18px; font-weight: 600; color: var(--lavender);
+    }
+
+    .edu-degree {
+      font-size: 13px; font-weight: 400; color: var(--muted);
+    }
+
+    .edu-top-right {
+      display: flex; flex-direction: column;
+      align-items: flex-end; gap: 6px; flex-shrink: 0;
+    }
+
+    .edu-date { font-size: 13px; font-weight: 300; color: var(--lavender); }
+
+    .edu-badge {
+      font-size: 10px; font-weight: 500;
+      padding: 3px 10px; border-radius: 20px;
+    }
+
+    .badge-current {
+      background: rgba(180,79,255,0.12);
+      border: 1px solid rgba(180,79,255,0.35);
+      color: var(--purple);
+    }
+
+    .badge-completed {
+      background: rgba(255,63,164,0.1);
+      border: 1px solid rgba(255,63,164,0.3);
+      color: var(--pink);
+    }
+
+    /* ── CARD META ── */
+    .edu-meta {
+      padding: 18px 24px;
+      display: flex; flex-wrap: wrap; gap: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-meta-item { display: flex; flex-direction: column; gap: 4px; }
+
+    .edu-meta-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+    }
+
+    .edu-meta-value { font-size: 13px; font-weight: 400; color: var(--lavender); }
+
+    /* ── PROGRESS ── */
+    .edu-progress {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .edu-progress-header {
+      display: flex; justify-content: space-between;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 1px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 10px;
+    }
+
+    .edu-progress-track {
+      height: 4px; background: var(--border);
+      border-radius: 2px; overflow: hidden;
+    }
+
+    .edu-progress-fill {
+      height: 100%; border-radius: 2px;
+      animation: progressin 1.2s ease-out forwards;
+      width: 0;
+    }
+
+    .current .edu-progress-fill { background: var(--purple); }
+    .completed .edu-progress-fill { background: var(--pink); }
+
+    @keyframes progressin { to { width: var(--prog); } }
+
+    /* ── COURSEWORK ── */
+    .edu-courses {
+      padding: 18px 24px;
+    }
+
+    .edu-courses-label {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 12px;
+    }
+
+    .edu-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .edu-tag {
+      font-size: 12px; font-weight: 400;
+      padding: 4px 12px; border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--surface2);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .current .edu-tag:hover { border-color: rgba(180,79,255,0.4); color: var(--purple); }
+    .completed .edu-tag:hover { border-color: rgba(255,63,164,0.4); color: var(--pink); }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-name {
+      font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--lavender); }
+    .footer-copy { font-size: 11px; color: var(--dim); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="navbar-placeholder"></div>
+
+
+<div class="page">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="page-eyebrow">Education</div>
+    <div class="page-title">Academic <span>Background.</span></div>
+    <div class="page-desc">
+      My educational journey in computer science and cybersecurity,
+      building the technical foundation for a career in digital defense.
+    </div>
+  </div>
+
+  <!-- EDU CARDS -->
+  <div class="content">
+
+    <!-- WGU -->
+    <div class="edu-card current">
+      <div class="edu-top">
+        <div class="edu-top-left">
+          <div class="edu-school">Western Governors University</div>
+          <div class="edu-degree">M.S. Cybersecurity &amp; Information Assurance</div>
+        </div>
+        <div class="edu-top-right">
+          <div class="edu-date">Oct 2023 — Jul 2026 (anticipated)</div>
+          <div class="edu-badge badge-current">● In Progress</div>
+        </div>
+      </div>
+
+      <div class="edu-meta">
+        <div class="edu-meta-item">
+          <div class="edu-meta-label">Location</div>
+          <div class="edu-meta-value">Remote</div>
+        </div>
+        <div class="edu-meta-item">
+          <div class="edu-meta-label">Degree</div>
+          <div class="edu-meta-value">Master of Science</div>
+        </div>
+        <div class="edu-meta-item">
+          <div class="edu-meta-label">Focus</div>
+          <div class="edu-meta-value">Cybersecurity &amp; Information Assurance</div>
+        </div>
+      </div>
+
+      <div class="edu-progress">
+        <div class="edu-progress-header">
+          <span>Degree Progress</span>
+          <span>88% Complete</span>
+        </div>
+        <div class="edu-progress-track">
+          <div class="edu-progress-fill" style="--prog: 88%;"></div>
+        </div>
+      </div>
+
+      <div class="edu-courses">
+        <div class="edu-courses-label">Key Coursework</div>
+        <div class="edu-tags">
+          <span class="edu-tag">Network Security</span>
+          <span class="edu-tag">Ethical Hacking</span>
+          <span class="edu-tag">Digital Forensics</span>
+          <span class="edu-tag">Cryptography</span>
+          <span class="edu-tag">Cloud Security</span>
+          <span class="edu-tag">Risk Management</span>
+          <span class="edu-tag">Incident Response</span>
+          <span class="edu-tag">Security Operations</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GSU -->
+    <div class="edu-card completed">
+      <div class="edu-top">
+        <div class="edu-top-left">
+          <div class="edu-school">Georgia State University</div>
+          <div class="edu-degree">B.S. Computer Science</div>
+        </div>
+        <div class="edu-top-right">
+          <div class="edu-date">Aug 2019 — May 2023</div>
+          <div class="edu-badge badge-completed">✓ Completed</div>
+        </div>
+      </div>
+
+      <div class="edu-meta">
+        <div class="edu-meta-item">
+          <div class="edu-meta-label">Location</div>
+          <div class="edu-meta-value">Atlanta, GA</div>
+        </div>
+        <div class="edu-meta-item">
+          <div class="edu-meta-label">Degree</div>
+          <div class="edu-meta-value">Bachelor of Science</div>
+        </div>
+        <div class="edu-meta-item">
+          <div class="edu-meta-label">Focus</div>
+          <div class="edu-meta-value">Computer Science</div>
+        </div>
+      </div>
+
+      <div class="edu-progress">
+        <div class="edu-progress-header">
+          <span>Degree Progress</span>
+          <span>100% Complete</span>
+        </div>
+        <div class="edu-progress-track">
+          <div class="edu-progress-fill" style="--prog: 100%;"></div>
+        </div>
+      </div>
+
+      <div class="edu-courses">
+        <div class="edu-courses-label">Key Coursework</div>
+        <div class="edu-tags">
+          <span class="edu-tag">Data Structures</span>
+          <span class="edu-tag">Algorithms</span>
+          <span class="edu-tag">Operating Systems</span>
+          <span class="edu-tag">Database Systems</span>
+          <span class="edu-tag">Software Engineering</span>
+          <span class="edu-tag">Computer Networks</span>
+          <span class="edu-tag">Web Development</span>
+          <span class="edu-tag">Systems Programming</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Tanisha Batta</div>
+  <ul class="footer-links">
+     <li><a href="mailto:tanisha.batta@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/tanisha-batta-88954b1b0/" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/tanishabatta" target="_blank">GitHub</a></li>
+    <li><a href="https://calendly.com/tanisha-batta" target="_blank">Calendly</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2025 Tanisha Batta</div>
+</footer>
+
+<script>
+ 
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        const container = document.getElementById('navbar-placeholder');
+        container.innerHTML = data;
+
+        // Run navbar.js
+        initNavbar(container);
+      });
+</script>
+<script src="navbar.js"></script>
+</body>
+</html>

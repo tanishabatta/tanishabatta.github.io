@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Skills — Tanisha Batta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #09060f;
+      --surface:   #110d1e;
+      --surface2:  #1a1030;
+      --border:    #2d1f4e;
+      --purple:    #b44fff;
+      --purple-lt: #c97aff;
+      --pink:      #ff3fa4;
+      --lavender:  #d4a8ff;
+      --white:     #f0e6ff;
+      --muted:     #7a5fa0;
+      --dim:       #4a3468;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      font-family: 'Inter', sans-serif;
+      color: var(--white);
+      overflow-x: hidden; min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(180,79,255,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(255,63,164,0.05) 0%, transparent 55%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── NAV ── */
+
+
+    /* ── PAGE ── */
+    .page { position: relative; z-index: 1; padding-top: 62px; }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      max-width: 1000px; margin: 0 auto;
+      padding: 56px 32px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .page-eyebrow {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 3px; text-transform: uppercase;
+      color: var(--purple); margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .page-eyebrow::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--purple); }
+
+    .page-title {
+      font-family: 'Orbitron', monospace;
+      font-weight: 900; font-size: clamp(24px, 4vw, 38px);
+      letter-spacing: 1px; color: var(--white); margin-bottom: 12px;
+    }
+
+    .page-title span {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .page-desc {
+      font-size: 14px; font-weight: 300;
+      line-height: 1.8; color: var(--lavender); max-width: 520px;
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      max-width: 1000px; margin: 0 auto;
+      padding: 48px 32px 64px;
+      display: flex; flex-direction: column; gap: 40px;
+    }
+
+    @media (max-width: 680px) { .content { padding: 36px 24px 48px; } }
+
+    /* ── SKILL GROUP ── */
+    .skill-group {
+      display: flex; flex-direction: column; gap: 16px;
+      animation: fadein 0.4s both;
+    }
+
+    .skill-group:nth-child(1) { animation-delay: 0.05s; }
+    .skill-group:nth-child(2) { animation-delay: 0.12s; }
+    .skill-group:nth-child(3) { animation-delay: 0.19s; }
+    .skill-group:nth-child(4) { animation-delay: 0.26s; }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .skill-group-header {
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .skill-group-icon { font-size: 18px; }
+
+    .skill-group-title {
+      font-size: 13px; font-weight: 600;
+      color: var(--lavender); letter-spacing: 0.3px;
+    }
+
+    .skill-group-line {
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, var(--border), transparent);
+    }
+
+    /* ── SKILL TAGS ── */
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .skill-tag {
+        font-size: 13px; font-weight: 400;
+        padding: 6px 14px; border-radius: 6px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+        background: var(--surface);
+        transition: border-color 0.2s, color 0.2s, background 0.2s;
+        cursor: default;
+    }
+
+    .skill-tag:hover {
+    border-color: rgba(180,79,255,0.4);
+    color: var(--lavender);
+    background: var(--surface2);
+    }
+
+    .skill-tag.key {
+    border-bottom: 2px solid var(--purple);
+    }
+
+
+
+    .skill-tag.highlight:hover {
+      border-color: var(--purple);
+      background: rgba(180,79,255,0.12);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 12px;
+    }
+
+    .footer-name {
+      font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .footer-links { display: flex; gap: 20px; list-style: none; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--lavender); }
+    .footer-copy { font-size: 11px; color: var(--dim); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<div id="navbar-placeholder"></div>
+
+
+
+<div class="page">
+
+  <div class="page-header">
+    <div class="page-eyebrow">Skills</div>
+    <div class="page-title">Technical <span>Skills.</span></div>
+    <div class="page-desc">
+      Tools, languages, platforms, and concepts I've worked with across
+      internships, projects, and coursework.
+    </div>
+  </div>
+
+  <div class="content">
+
+    <!-- SECURITY TOOLS -->
+    <div class="skill-group">
+      <div class="skill-group-header">
+        <span class="skill-group-icon">🛡️</span>
+        <span class="skill-group-title">Security Tools & Platforms</span>
+        <div class="skill-group-line"></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Microsoft Sentinel</span>
+        <span class="skill-tag highlight">Wazuh</span>
+        <span class="skill-tag highlight">Abnormal Security</span>
+        <span class="skill-tag">Kali Linux</span>
+        <span class="skill-tag">Metasploit</span>
+        <span class="skill-tag">Burp Suite</span>
+        <span class="skill-tag">Nmap</span>
+        <span class="skill-tag">Wireshark</span>
+        <span class="skill-tag">Hydra</span>
+        <span class="skill-tag">pfSense</span>
+      </div>
+    </div>
+
+    <!-- CLOUD & INFRASTRUCTURE -->
+    <div class="skill-group">
+      <div class="skill-group-header">
+        <span class="skill-group-icon">☁️</span>
+        <span class="skill-group-title">Cloud & Infrastructure</span>
+        <div class="skill-group-line"></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Microsoft Azure</span>
+        <span class="skill-tag highlight">Azure AD</span>
+        <span class="skill-tag highlight">Active Directory</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">Ubuntu Server</span>
+        <span class="skill-tag">VirtualBox/UTM</span>
+        <span class="skill-tag">ServiceNow</span>
+        <span class="skill-tag">Microsoft 365</span>
+      </div>
+    </div>
+
+    <!-- NETWORKING -->
+    <div class="skill-group">
+      <div class="skill-group-header">
+        <span class="skill-group-icon">🌐</span>
+        <span class="skill-group-title">Networking & Architecture</span>
+        <div class="skill-group-line"></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Zero Trust</span>
+        <span class="skill-tag highlight">VLANs / Network Segmentation</span>
+        <span class="skill-tag">DMZ Configuration</span>
+        <span class="skill-tag">TCP/IP</span>
+        <span class="skill-tag">VPN</span>
+        <span class="skill-tag">MFA</span>
+        <span class="skill-tag">RBAC</span>
+        <span class="skill-tag">DNS</span>
+        <span class="skill-tag">DHCP</span>
+      </div>
+    </div>
+
+    <!-- LANGUAGES -->
+    <div class="skill-group">
+      <div class="skill-group-header">
+        <span class="skill-group-icon">💻</span>
+        <span class="skill-group-title">Languages</span>
+        <div class="skill-group-line"></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">Python</span>
+        <span class="skill-tag">Bash</span>
+        <span class="skill-tag">PowerShell</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">HTML / CSS</span>
+        <span class="skill-tag">Angular</span>
+        <span class="skill-tag">SQL</span>
+      </div>
+    </div>
+
+    <!-- FRAMEWORKS & CONCEPTS -->
+    <div class="skill-group">
+      <div class="skill-group-header">
+        <span class="skill-group-icon">📋</span>
+        <span class="skill-group-title">Frameworks & Concepts</span>
+        <div class="skill-group-line"></div>
+      </div>
+      <div class="skill-tags">
+        <span class="skill-tag highlight">PCI DSS</span>
+        <span class="skill-tag highlight">GLBA</span>
+        <span class="skill-tag highlight">NIST</span>
+        <span class="skill-tag highlight">NIST</span>
+        <span class="skill-tag highlight">HIPAA</span>
+        <span class="skill-tag">IAM / Least Privilege</span>
+        <span class="skill-tag">Incident Response</span>
+        <span class="skill-tag">Threat Detection</span>
+        <span class="skill-tag">Risk Management</span>
+        <span class="skill-tag">RESTful APIs</span>
+        <span class="skill-tag">Agile / Scrum</span>
+        <span class="skill-tag">GitHub</span>
+        <span class="skill-tag highlight">JIRA</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Tanisha Batta</div>
+  <ul class="footer-links">
+     <li><a href="mailto:tanisha.batta@gmail.com">Email</a></li>
+    <li><a href="https://www.linkedin.com/in/tanisha-batta-88954b1b0/" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/tanishabatta" target="_blank">GitHub</a></li>
+    <li><a href="https://calendly.com/tanisha-batta" target="_blank">Calendly</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2025 Tanisha Batta</div>
+</footer>
+
+  <script>
+    fetch('navbar.html')
+      .then(res => res.text())
+      .then(data => {
+        const container = document.getElementById('navbar-placeholder');
+        container.innerHTML = data;
+
+        // Run navbar.js
+        initNavbar(container);
+      });
+  </script>
+  <script src="navbar.js"></script>
+
+</body>
+</html>
