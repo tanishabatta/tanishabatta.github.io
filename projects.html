@@ -99,6 +99,51 @@
       transition: border-color 0.2s;
     }
 
+    /* ── SCREENSHOTS ── */
+.project-screenshots {
+  padding: 16px 24px 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* always 2 per row */
+  gap: 14px;
+}
+.project-screenshots:has(.screenshot:only-child) {
+  grid-template-columns: 1fr;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .project-screenshots {
+    grid-template-columns: 1fr; /* stack images */
+  }
+}
+
+.screenshot {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface2);
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.screenshot img {
+  width: 100%;
+  display: block;
+}
+
+.screenshot:hover {
+  transform: scale(1.02);
+  border-color: rgba(180,79,255,0.4);
+}
+
+.screenshot-caption {
+  font-size: 11px;
+  padding: 6px 8px;
+  color: var(--muted);
+  text-align: center;
+}
+
     .project-card:nth-child(1) { animation-delay: 0.05s; }
     .project-card:nth-child(2) { animation-delay: 0.15s; }
 
@@ -270,6 +315,32 @@
           </div>
         </div>
       </div>
+
+
+      <div class="project-screenshots">
+  <div class="screenshot">
+    <img src="honeypotimg/azurevm.jpg" alt="Azure VM">
+    <div class="screenshot-caption">Ubuntu VM created in Microsoft Azure</div>
+  </div>
+
+   <div class="screenshot">
+    <img src="honeypotimg/t-pot.jpg" alt="T-Pot Terminal">
+    <div class="screenshot-caption">T-Pot honeypot services running on Azure VM</div>
+  </div>
+
+  <div class="screenshot">
+    <img src="honeypotimg/dashboard2.jpg" alt="Kibana Dashboard">
+    <div class="screenshot-caption">Kibana dashboard showing real-time attack activity</div>
+  </div>
+
+  <div class="screenshot">
+    <img src="honeypotimg/elasticrules.jpg" alt="Elastic">
+    <div class="screenshot-caption">Rules created in Elastic to trigger alerts</div>
+  </div>
+
+
+</div>
+
  
       <div class="project-footer">
         <span class="tech-tag">T-Pot</span>
@@ -310,6 +381,22 @@
         </div>
       </div>
 
+
+      <div class="project-screenshots">
+  <div class="screenshot">
+    <img src="wazuhimg/wazuhdashboard.png" alt="Wazuh Dashboard">
+    <div class="screenshot-caption">Wazuh SIEM dashboard overview with security events</div>
+  </div>
+
+  <div class="screenshot">
+    <img src="wazuhimg/hydraattack.png" alt="Hydra Attack">
+    <div class="screenshot-caption">Brute force attack using Hydra</div>
+  </div>
+
+</div>
+
+      
+
       <div class="project-footer">
         <span class="tech-tag">Wazuh</span>
         <span class="tech-tag">Docker</span>
@@ -337,6 +424,7 @@
             <div class="bullet-dot"></div>
             <span>Engineered a secure two-company network merger replacing end-of-life infrastructure with modern Cisco, Fortinet, and Sophos equipment while migrating on-premises servers to Microsoft Azure, delivering the full solution under a $50,000 budget.</span>
           </div>
+
           <div class="project-bullet">
             <div class="bullet-dot"></div>
             <span>Implemented Zero-Trust security controls including RBAC, MFA, network segmentation via VLANs, and a DMZ to enforce least privilege and reduce attack surface across the merged environment.</span>
@@ -347,6 +435,13 @@
           </div>
         </div>
       </div>
+
+                <div class="project-screenshots">
+  <div class="screenshot">
+    <img src="excellenceaward.png" alt="WGU Excellence Award">
+    <div class="screenshot-caption">WGU Excellence Award for outstanding network architecture design</div>
+  </div>
+</div>
 
       <div class="project-footer">
         <span class="tech-tag">Cisco</span>
