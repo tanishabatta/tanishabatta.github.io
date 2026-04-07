@@ -354,6 +354,45 @@
   }
 }
 
+/* ── PROJECTS SPOTLIGHT ── */
+#projects-spotlight {
+  padding: 70px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.projects-spotlight-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;   /* image left, text right */
+  gap: 48px;
+  align-items: center;
+}
+
+.projects-spotlight-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+}
+
+.projects-spotlight-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 680px) {
+  .projects-spotlight-inner {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
     /* ── FOOTER ── */
     footer {
       position: relative; z-index: 1;
@@ -383,6 +422,8 @@
   </style>
 </head>
 <body>
+
+  
 
 <!-- NAV -->
 <div id="navbar-placeholder"></div>
@@ -433,6 +474,39 @@
     <div style="width:100%; height:280px; border-radius:10px; border:1px solid var(--border); overflow:hidden;">
       <img src="sillyphoto.JPG" alt="Tanisha Batta" style="width:100%; height:100%; object-fit:cover;"/>
     </div>
+  </div>
+</section>
+
+<!-- PROJECTS SPOTLIGHT -->
+<section id="projects-spotlight">
+  <div class="projects-spotlight-inner">
+
+    <!-- LEFT: IMAGE -->
+    <div class="projects-spotlight-image">
+      <img src="honeypotimg/t-pot.jpg" alt="Project screenshot">
+    </div>
+
+    <!-- RIGHT: TEXT -->
+    <div class="projects-spotlight-content">
+      <div class="spotlight-label">Featured Projects</div>
+
+      <div class="spotlight-heading">Cybersecurity Projects </div>
+      <div class="spotlight-meta">
+        Hands-On Projects · 2026
+      </div>
+
+      <div class="spotlight-text">
+        A showcase of cybersecurity projects including honeypot deployments, 
+        SIEM monitoring labs, and secure network architecture, 
+        highlighting real-world skills in threat detection, system security, 
+        and practical problem-solving.
+      </div>
+
+      <a href="projects.html" class="spotlight-link">
+        See all projects &rarr;
+      </a>
+    </div>
+
   </div>
 </section>
 
